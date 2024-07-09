@@ -19,5 +19,6 @@ CREATE TABLE IF NOT EXISTS 'links' (
     id TEXT PRIMARY KEY,
     trip_id TEXT,
     link TEXT NOT NULL,
+    title text not null,
     FOREIGN KEY (trip_id) REFERENCES trip(id)
 );

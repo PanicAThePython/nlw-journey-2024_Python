@@ -1,36 +1,37 @@
 from sqlite3 import Connection
 from typing import Dict, Tuple, List
 
-class EmailsToInviteRepository:
+class LinksRepository:
     def __init__(self, conn: Connection) -> None:
         self.__conn = conn
 
-    def registry_email(self, email_infos: Dict) -> None:
+    def registry_link(self, link_infos: Dict) -> None:
         cursor = self.__conn.cursor()
         cursor.execute(
             '''
-                insert into emails_to_invite
-                (id, trip_id, email)
-                values (?, ?, ?)
+                insert into links
+                (id, trip_id, link, title)
+                values (?, ?, ?, ?)
             ''',
             (
-                email_infos["id"],
-                email_infos["trip_id"],
-                email_infos["email"],
+                link_infos["id"],
+                link_infos["trip_id"],
+                link_infos["link"],
+                link_infos["title"],
             )
         )
         self.__conn.commit() #confirma q quer realizar a ação de cima
     
-    def find_emails_from_trip(self, trip_id: str) -> List[Tuple]:
+    def find_links_from_trip(self, trip_id: str) -> List[Tuple]:
         cursor = self.__conn.cursor()
         cursor.execute(
             '''
-                select * from emails_to_invite where trip_id = ?
+                select * from links where trip_id = ?
             ''',
             (
                 trip_id,
             )
         )
-        emails = cursor.fetchall()
-        return emails
+        links = cursor.fetchall()
+        return links
     
