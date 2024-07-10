@@ -9,6 +9,10 @@ Depois de clonar o repositório, certifique-se de realizar os seguintes comandos
 >> 
 > pip3 install requests
 
+Depois, copie o conteúdo do arquivo "squema.sql" e cole no editor de código SQL de sua escolha (no projeto, foi utilizado o DBeaver).
+**IMPORTANTE:** ao criar o DB, selecione a opção "SQLite".
+Execute os comandos e certifique-se que as tabelas foram criadas.
+
 Após isso, na raiz do projeto execute o seguinte comando para rodar o servidor:
 > python run.py
 
